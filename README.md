@@ -6,5 +6,9 @@ Learn to build, secure, and deploy a full-stack app with Flask, React, Docker, a
 
 This is for new volunteers working with Times Square Church to develop applications.
 
+## Changes 
+Changes 
 ## title text
 blah blah blah
+
+
