@@ -1,28 +1,100 @@
 name: CLA Check
 
 on:
-  workflow_dispatch:  # Allows manual triggering
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [
+      opened,
+      synchronize,
+      reopened,
+      labeled,
+      unlabeled,
+      assigned,
+      unassigned,
+      review_requested,
+      review_request_removed,
+      ready_for_review,
+      converted_to_draft
+    ]
   issue_comment:
     types: [created]
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: read
 
 jobs:
   cla-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Check CLA
-        uses: actions/github-script@v6
+      - name: Check CLA Signature
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const checkCLA = require('./.github/cla/cla-check.js');
-            try {
-              await checkCLA(github, context, core);
-            } catch (error) {
-              console.error('Error running CLA check:', error);
-              core.setFailed(error.message);
+            const requiredComment = "I have read the CLA, Contributing Guidelines, and Code of Conduct, and agree to their terms.";
+            const prNumber = context.issue.number;
+            const prAuthor = context.payload.pull_request.user.login;
+            
+            // Get all comments on the PR
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber
+            });
+            
+            // Check if the PR author has signed the CLA
+            const hasSigned = comments.data.some(comment => 
+              comment.user.login === prAuthor && 
+              comment.body.trim() === requiredComment
+            );
+            
+            // Get existing CLA status comment if any
+            const botComments = comments.data.filter(comment => 
+              comment.user.login === 'github-actions[bot]' &&
+              comment.body.includes('CLA Status')
+            );
+            
+            const statusMessage = hasSigned
+              ? `✅ CLA Status: Signed\n\nThank you for signing our agreements! Your pull request will be reviewed by our team.\n\nPlease note that by contributing, you agree to:\n- Our [Contributor License Agreement](CLA.md)\n- Our [Contributing Guidelines](CONTRIBUTING.md)\n- Our [Code of Conduct](CODE_OF_CONDUCT.md)`
+              : `❌ CLA Status: Not Signed\n\nThank you for your submission! Before we can accept your contribution, we ask that you:\n\n1. Read and agree to our [Contributor License Agreement](CLA.md)\n2. Read and follow our [Contributing Guidelines](CONTRIBUTING.md)\n3. Read and follow our [Code of Conduct](CODE_OF_CONDUCT.md)\n\nPlease confirm that you have read and agree to all of these documents by commenting on this PR with the following text:\n'I have read the CLA, Contributing Guidelines, and Code of Conduct, and agree to their terms.'`;
+            
+            // Update or create status comment
+            if (botComments.length > 0) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComments[0].id,
+                body: statusMessage
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: statusMessage
+              });
+            }
+            
+            // Add or update label based on CLA status
+            const labelName = 'cla-signed';
+            const hasLabel = context.payload.pull_request.labels.some(label => label.name === labelName);
+            
+            if (hasSigned && !hasLabel) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                labels: [labelName]
+              });
+            } else if (!hasSigned && hasLabel) {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                name: labelName
+              });
             }

@@ -1,4 +1,228 @@
 # CLA Assistant Configuration
+# See https://github.com/cla-assistant/cla-assistant for more details
+
+# The URL to your CLA document
+claLink: "CLA.md"
+
+# The message that will be displayed in the PR if the CLA is not signed
+prComment: |
+  Thank you for your submission! Before we can accept your contribution, we ask that you:
+
+  1. Read and agree to our [Contributor License Agreement](CLA.md)
+  2. Read and follow our [Contributing Guidelines](CONTRIBUTING.md)
+  3. Read and follow our [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  Please confirm that you have read and agree to all of these documents by commenting on this PR with the following text:
+  'I have read the CLA, Contributing Guidelines, and Code of Conduct, and agree to their terms.'
+
+# The message that will be displayed in the PR if the CLA is signed
+signedComment: |
+  Thank you for signing our agreements! Your pull request will be reviewed by our team.
+
+  Please note that by contributing, you agree to:
+  - Our [Contributor License Agreement](CLA.md)
+  - Our [Contributing Guidelines](CONTRIBUTING.md)
+  - Our [Code of Conduct](CODE_OF_CONDUCT.md)
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is closed
+closedComment: |
+  This PR was closed because the required agreements were not signed. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  Then reopen the PR if you would like to continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is merged
+mergedComment: |
+  This PR was merged without signing the required agreements. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  For future contributions.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is reopened
+reopenedComment: |
+  This PR was reopened. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is synchronized
+synchronizedComment: |
+  This PR was synchronized. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is labeled
+labeledComment: |
+  This PR was labeled. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is unlabeled
+unlabeledComment: |
+  This PR was unlabeled. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is assigned
+assignedComment: |
+  This PR was assigned. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is unassigned
+unassignedComment: |
+  This PR was unassigned. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is reviewed
+reviewedComment: |
+  This PR was reviewed. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is commented
+commentedComment: |
+  This PR was commented. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is edited
+editedComment: |
+  This PR was edited. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is locked
+lockedComment: |
+  This PR was locked. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is unlocked
+unlockedComment: |
+  This PR was unlocked. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is head_ref_deleted
+headRefDeletedComment: |
+  This PR's head ref was deleted. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is head_ref_restored
+headRefRestoredComment: |
+  This PR's head ref was restored. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is base_ref_changed
+baseRefChangedComment: |
+  This PR's base ref was changed. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is ready_for_review
+readyForReviewComment: |
+  This PR is ready for review. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is converted_to_draft
+convertedToDraftComment: |
+  This PR was converted to draft. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is review_requested
+reviewRequestedComment: |
+  This PR was requested for review. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is review_request_removed
+reviewRequestRemovedComment: |
+  This PR's review request was removed. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is auto_merge_enabled
+autoMergeEnabledComment: |
+  This PR's auto-merge was enabled. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# The message that will be displayed in the PR if the CLA is not signed and the PR is auto_merge_disabled
+autoMergeDisabledComment: |
+  This PR's auto-merge was disabled. Please read and sign:
+  1. [Contributor License Agreement](CLA.md)
+  2. [Contributing Guidelines](CONTRIBUTING.md)
+  3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+  To continue contributing.
+
+# CLA Assistant Configuration
 cla:
   # The URL to your CLA document
   claUrl: https://github.com/tscnyc/fullstack-bootcamp/blob/main/CLA.md
@@ -22,19 +246,29 @@ repository:
 assistant:
   # The message to show when CLA is not signed
   notSignedMessage: |
-    Thank you for your pull request! Before we can accept it, you need to sign our Contributor License Agreement (CLA).
+    Thank you for your pull request! Before we can accept it, you need to:
 
-    Please read and sign our:
-    1. [Contributor License Agreement](CLA.md)
-    2. [Code of Conduct](CODE_OF_CONDUCT.md)
-    3. [Contributing Guidelines](CONTRIBUTING.md)
+    1. Read and agree to our [Contributor License Agreement](CLA.md)
+    2. Read and follow our [Contributing Guidelines](CONTRIBUTING.md)
+    3. Read and follow our [Code of Conduct](CODE_OF_CONDUCT.md)
 
-    Once you've signed the CLA, please comment on this pull request with "I have read the CLA and agree to its terms."
+    Once you've read and agreed to all of these documents, please comment on this pull request with:
+    "I have read the CLA, Contributing Guidelines, and Code of Conduct, and agree to their terms."
 
   # The message to show when CLA is signed
   signedMessage: |
-    Thank you for signing our CLA! Your pull request will be reviewed by our team.
+    Thank you for signing our agreements! Your pull request will be reviewed by our team.
+
+    Please note that by contributing, you agree to:
+    - Our [Contributor License Agreement](CLA.md)
+    - Our [Contributing Guidelines](CONTRIBUTING.md)
+    - Our [Code of Conduct](CODE_OF_CONDUCT.md)
 
   # The message to show when CLA is pending
   pendingMessage: |
-    We're waiting for your CLA signature. Please follow the instructions above to sign the CLA. 
+    We're waiting for you to read and agree to:
+    1. [Contributor License Agreement](CLA.md)
+    2. [Contributing Guidelines](CONTRIBUTING.md)
+    3. [Code of Conduct](CODE_OF_CONDUCT.md)
+
+    Please follow the instructions above to confirm your agreement. 

@@ -1,28 +1,35 @@
 name: Setup Labels
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual triggering
   repository_dispatch:
-    types: [repository_created]
+    types: [setup_labels]
 
 jobs:
   setup-labels:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup CLA Label
+        uses: actions/github-script@v7
         with:
-          node-version: '16'
-          
-      - name: Install dependencies
-        working-directory: .github/cla
-        run: npm install
-        
-      - name: Run label setup script
-        working-directory: .github/cla
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: npm run setup-labels 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'cla-signed',
+                color: '00ff00',  // Green
+                description: 'Pull request author has signed the CLA'
+              });
+              console.log('CLA label created successfully');
+            } catch (error) {
+              if (error.status === 422) {
+                console.log('CLA label already exists');
+              } else {
+                throw error;
+              }
+            }
