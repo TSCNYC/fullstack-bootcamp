@@ -35,6 +35,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const core = require('@actions/core');
             const requiredComment = "I have read the CLA, Contributing Guidelines, and Code of Conduct, and agree to their terms.";
             const prNumber = context.issue.number;
             const prAuthor = context.payload.pull_request.user.login;
@@ -97,4 +98,9 @@ jobs:
                 issue_number: prNumber,
                 name: labelName
               });
+            }
+            
+            // Fail the workflow if CLA is not signed
+            if (!hasSigned) {
+              core.setFailed('CLA not signed');
             }
