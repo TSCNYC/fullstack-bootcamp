@@ -1,6 +1,7 @@
 name: CLA Check
 
 on:
+  workflow_dispatch:  # Allows manual triggering
   pull_request:
     types: [opened, synchronize, reopened]
   issue_comment:
