@@ -1,0 +1,40 @@
+# CLA Assistant Configuration
+cla:
+  # The URL to your CLA document
+  claUrl: https://github.com/tscnyc/fullstack-bootcamp/blob/main/CLA.md
+  # The URL to your Code of Conduct
+  cocUrl: https://github.com/tscnyc/fullstack-bootcamp/blob/main/CODE_OF_CONDUCT.md
+  # The URL to your Contributing Guidelines
+  contributingUrl: https://github.com/tscnyc/fullstack-bootcamp/blob/main/CONTRIBUTING.md
+  # The URL to your License
+  licenseUrl: https://github.com/tscnyc/fullstack-bootcamp/blob/main/LICENSE
+
+# Repository settings
+repository:
+  # The branch that requires CLA signing
+  protectedBranch: main
+  # Whether to require CLA signing for all branches
+  requireClaForAllBranches: true
+  # Whether to require CLA signing for forks
+  requireClaForForks: true
+
+# CLA Assistant settings
+assistant:
+  # The message to show when CLA is not signed
+  notSignedMessage: |
+    Thank you for your pull request! Before we can accept it, you need to sign our Contributor License Agreement (CLA).
+
+    Please read and sign our:
+    1. [Contributor License Agreement](CLA.md)
+    2. [Code of Conduct](CODE_OF_CONDUCT.md)
+    3. [Contributing Guidelines](CONTRIBUTING.md)
+
+    Once you've signed the CLA, please comment on this pull request with "I have read the CLA and agree to its terms."
+
+  # The message to show when CLA is signed
+  signedMessage: |
+    Thank you for signing our CLA! Your pull request will be reviewed by our team.
+
+  # The message to show when CLA is pending
+  pendingMessage: |
+    We're waiting for your CLA signature. Please follow the instructions above to sign the CLA. 

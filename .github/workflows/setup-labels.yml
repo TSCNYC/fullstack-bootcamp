@@ -1,0 +1,28 @@
+name: Setup Labels
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [repository_created]
+
+jobs:
+  setup-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        working-directory: .github/cla
+        run: npm install
+        
+      - name: Run label setup script
+        working-directory: .github/cla
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: npm run setup-labels 

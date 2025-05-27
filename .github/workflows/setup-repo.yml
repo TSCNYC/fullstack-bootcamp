@@ -1,0 +1,228 @@
+name: Repository Setup
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  repository_dispatch:
+    types: [setup_repo]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Repository
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Create CLA-related labels
+            const labels = [
+              {
+                name: 'cla-signed',
+                color: '2ecc71',  // Green
+                description: 'Contributor has signed the CLA'
+              },
+              {
+                name: 'cla-not-signed',
+                color: 'e74c3c',  // Red
+                description: 'Contributor needs to sign the CLA'
+              },
+              {
+                name: 'needs-review',
+                color: 'f1c40f',  // Yellow
+                description: 'Pull request needs review'
+              },
+              {
+                name: 'in-progress',
+                color: '3498db',  // Blue
+                description: 'Work is in progress'
+              },
+              {
+                name: 'documentation',
+                color: '9b59b6',  // Purple
+                description: 'Changes to documentation'
+              },
+              {
+                name: 'bug',
+                color: 'e67e22',  // Orange
+                description: 'Bug fix or issue resolution'
+              },
+              {
+                name: 'enhancement',
+                color: '1abc9c',  // Teal
+                description: 'New feature or improvement'
+              }
+            ];
+
+            // Create or update labels
+            for (const label of labels) {
+              try {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description
+                });
+                console.log(`Created label: ${label.name}`);
+              } catch (error) {
+                if (error.status === 422) {
+                  // Label already exists, update it
+                  await github.rest.issues.updateLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label.name,
+                    color: label.color,
+                    description: label.description
+                  });
+                  console.log(`Updated label: ${label.name}`);
+                } else {
+                  console.error(`Error with label ${label.name}:`, error);
+                }
+              }
+            }
+
+            // Set up branch protection for main
+            try {
+              await github.rest.repos.updateBranchProtection({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                branch: 'main',
+                required_status_checks: {
+                  strict: true,
+                  contexts: ['cla-check']
+                },
+                enforce_admins: true,
+                required_pull_request_reviews: {
+                  dismissal_restrictions: {},
+                  dismiss_stale_reviews: true,
+                  require_code_owner_reviews: true
+                },
+                restrictions: null
+              });
+              console.log('Branch protection rules set for main branch');
+            } catch (error) {
+              console.error('Error setting branch protection:', error);
+            }
+
+            // Create issue templates
+            const issueTemplates = [
+              {
+                name: 'bug_report.md',
+                content: `---
+name: Bug Report
+about: Create a report to help us improve
+title: '[BUG] '
+labels: bug
+assignees: ''
+---
+
+**Describe the bug**
+A clear and concise description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Environment:**
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+
+**Additional context**
+Add any other context about the problem here.`
+              },
+              {
+                name: 'feature_request.md',
+                content: `---
+name: Feature Request
+about: Suggest an idea for this project
+title: '[FEATURE] '
+labels: enhancement
+assignees: ''
+---
+
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is.
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.`
+              }
+            ];
+
+            // Create issue templates
+            for (const template of issueTemplates) {
+              try {
+                await github.rest.repos.createOrUpdateFileContents({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: `.github/ISSUE_TEMPLATE/${template.name}`,
+                  message: `Add ${template.name} template`,
+                  content: Buffer.from(template.content).toString('base64'),
+                  branch: 'main'
+                });
+                console.log(`Created issue template: ${template.name}`);
+              } catch (error) {
+                console.error(`Error creating issue template ${template.name}:`, error);
+              }
+            }
+
+            // Create PR template
+            const prTemplate = `---
+name: Pull Request
+about: Create a pull request
+title: ''
+labels: ''
+assignees: ''
+---
+
+**Description**
+A clear and concise description of what this PR does.
+
+**Type of Change**
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Documentation update
+
+**How Has This Been Tested?**
+Please describe the tests that you ran to verify your changes.
+
+**Checklist:**
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
+- [ ] Any dependent changes have been merged and published in downstream modules
+- [ ] I have checked my code and corrected any misspellings
+- [ ] I have signed the CLA`;
+
+            try {
+              await github.rest.repos.createOrUpdateFileContents({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: '.github/pull_request_template.md',
+                message: 'Add PR template',
+                content: Buffer.from(prTemplate).toString('base64'),
+                branch: 'main'
+              });
+              console.log('Created PR template');
+            } catch (error) {
+              console.error('Error creating PR template:', error);
+            } 

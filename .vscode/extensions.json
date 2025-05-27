@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-azuretools.vscode-docker",
+    "GitHub.vscode-pull-request-github",
+    "yzhang.markdown-all-in-one",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
