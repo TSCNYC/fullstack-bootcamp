@@ -2,11 +2,19 @@ module.exports = async function checkCLA(github, context, core) {
   const fs = require('fs');
   const { CLA_SIGNED_LABEL, CLA_NOT_SIGNED_LABEL } = process.env;
 
-  // Get the PR author
-  const prAuthor = context.payload.pull_request?.user.login || context.payload.issue.user.login;
+  // Get the PR author or issue creator
+  let prAuthor;
+  if (context.payload.pull_request) {
+    prAuthor = context.payload.pull_request.user.login;
+  } else if (context.payload.issue) {
+    prAuthor = context.payload.issue.user.login;
+  } else {
+    console.log('No PR or issue found in payload');
+    return;
+  }
 
   // Check if this is a CLA agreement comment
-  const isClaComment = context.payload.comment?.body.includes('I have read the CLA and agree to its terms');
+  const isClaComment = context.payload.comment?.body?.includes('I have read the CLA and agree to its terms') || false;
 
   if (isClaComment) {
     // Create CLA signature file
