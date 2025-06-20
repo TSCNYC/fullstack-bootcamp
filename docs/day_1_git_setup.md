@@ -2,170 +2,261 @@
 
 ## 🎯 Learning Objectives
 
-By the end of this lesson, you will be able to:
-- Understand version control and its importance
-- Set up Git on your local machine
-- Create and manage a GitHub account
-- Initialize a Git repository
-- Make commits and push changes to GitHub
-- Create and manage branches
-- Collaborate with others using pull requests
+By the end of this day, you will:
+- Understand the fundamentals of version control
+- Master essential Git commands and workflows
+- Set up secure GitHub authentication
+- Learn collaborative development practices
+- Understand branching strategies
 
-## 📝 Prerequisites
+## 📝 Key Concepts
 
-- A computer with internet access
-- Basic command line knowledge
-- A GitHub account (we'll create one if you don't have it)
+### 1. Version Control Basics
+- What problems does version control solve?
+  - [About Version Control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+  - [Why Version Control Matters](https://www.atlassian.com/git/tutorials/what-is-version-control)
+- Centralized vs. distributed systems
+  - [Comparing Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
+  - [Distributed vs. Centralized](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control#_distributed_vs_centralized)
+- Git's core concepts
+  - [Git Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
+  - [Core Concepts](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
 
-## 🚀 Lesson Content
+### 2. Git Architecture
+- Working directory
+  - [Git Working Directory](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
+  - [Working Tree](https://git-scm.com/docs/git-status#_output)
+- Staging area
+  - [Staging Area](https://git-scm.com/about/staging-area)
+  - [The Staging Area in Detail](https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging)
+- Local repository
+  - [Local Operations](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+  - [Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)
+- Remote repository
+  - [Working with Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+  - [Remote Management](https://git-scm.com/docs/git-remote)
 
-### 1. Introduction to Version Control
-
-Version control is a system that records changes to files over time, allowing you to:
-- Track changes
-- Revert to previous versions
-- Collaborate with others
-- Maintain different versions of your code
-
-### 2. Git Installation
-
-#### For macOS:
-```bash
-# Using Homebrew
-brew install git
-
-# Verify installation
-git --version
-```
-
-#### For Windows:
-1. Download Git from [git-scm.com](https://git-scm.com)
-2. Run the installer
-3. Verify installation in Command Prompt:
-```bash
-git --version
-```
-
-### 3. Git Configuration
-
-Set up your identity:
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-
-### 4. GitHub Account Setup
-
-1. Go to [github.com](https://github.com)
-2. Click "Sign Up"
-3. Follow the registration process
-4. Set up SSH keys for secure authentication:
-```bash
-# Generate SSH key
-ssh-keygen -t ed25519 -C "your.email@example.com"
-
-# Add SSH key to ssh-agent
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-
-# Copy public key to clipboard (macOS)
-pbcopy < ~/.ssh/id_ed25519.pub
-# For Windows (PowerShell)
-Get-Content ~/.ssh/id_ed25519.pub | Set-Clipboard
-```
-
-5. Add SSH key to GitHub:
-   - Go to Settings > SSH and GPG keys
-   - Click "New SSH key"
-   - Paste your key and save
-
-### 5. Creating Your First Repository
-
-1. Create a new repository on GitHub:
-   - Click the "+" icon in the top right
-   - Select "New repository"
-   - Name it "fullstack-bootcamp"
-   - Add a description
-   - Initialize with README
-   - Choose a license
-
-2. Clone the repository:
-```bash
-git clone git@github.com:yourusername/fullstack-bootcamp.git
-cd fullstack-bootcamp
-```
-
-### 6. Basic Git Commands
-
-```bash
-# Check repository status
-git status
-
-# Add files to staging area
-git add filename.txt
-git add .  # Add all files
-
-# Commit changes
-git commit -m "Initial commit"
-
-# Push changes to GitHub
-git push origin main
-```
-
-### 7. Working with Branches
-
-```bash
-# Create a new branch
-git checkout -b feature/new-feature
-
-# Switch branches
-git checkout main
-
-# List all branches
-git branch
-
-# Merge branches
-git checkout main
-git merge feature/new-feature
-```
+### 3. Collaboration Workflow
+- Branching strategies
+  - [Branching Workflows](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)
+  - [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
+  - [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+- Pull requests
+  - [About Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+  - [Creating Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+- Code review process
+  - [About Code Review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews)
+  - [Code Review Best Practices](https://google.github.io/eng-practices/review/)
+- Merge strategies
+  - [Basic Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+  - [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging)
+  - [Merge Strategies Explained](https://www.atlassian.com/git/tutorials/using-branches/merge-strategy)
 
 ## 💻 Practice Exercises
 
-1. Create a new branch called `day-1-exercise`
-2. Create a file called `hello.txt` with some text
-3. Commit the changes
-4. Push the branch to GitHub
-5. Create a pull request
-6. Merge the pull request
+### Exercise 1: Git Configuration & Authentication
+
+#### Deliverables
+1. Configure your Git identity with your name and email
+2. Set up SSH authentication for GitHub
+3. Verify your configuration and test GitHub connection
+
+#### Success Criteria
+- Running `git config --list` shows your correct name and email
+- You can successfully authenticate with GitHub using SSH
+- You understand the difference between global and local Git configurations
+
+#### Hints
+- Look into `git config --global` for user settings
+- Research SSH key generation and GitHub SSH key setup
+- Consider setting up helpful Git aliases for common commands
+
+#### Resources
+- [Git Configuration Guide](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+- [GitHub SSH Setup Guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+### Exercise 2: Repository Management
+
+#### Deliverables
+1. Create a new Git repository for your bootcamp project
+2. Set up essential repository files:
+   - README.md with project description
+   - .gitignore for Python and Node.js
+   - LICENSE file
+3. Connect your local repository to GitHub
+4. Make your first commit and push
+
+#### Success Criteria
+- Repository exists both locally and on GitHub
+- README.md clearly describes the project
+- .gitignore properly excludes common Python/Node.js files
+- Initial commit is pushed to GitHub
+
+#### Hints
+- Think about what information belongs in README.md
+- Research common .gitignore patterns for Python and Node.js
+- Consider using GitHub's license templates
+- Learn about remote repository management
+
+#### Resources
+- [GitHub Repository Creation Guide](https://docs.github.com/en/repositories/creating-and-managing-repositories)
+- [Choose a License](https://choosealicense.com/)
+- [GitHub .gitignore Templates](https://github.com/github/gitignore)
+
+### Exercise 3: Basic Git Operations
+
+#### Deliverables
+1. Create a basic project structure for your fullstack application
+2. Practice Git's basic workflow:
+   - Staging files selectively
+   - Creating atomic commits with meaningful messages
+   - Viewing and understanding commit history
+3. Demonstrate understanding of Git's state management
+
+#### Success Criteria
+- Project has a clear directory structure
+- Each commit represents a single logical change
+- Commit messages follow conventional commit format
+- You can explain what's in staging vs. working directory
+
+#### Hints
+- Think about organizing backend and frontend code
+- Research conventional commit message format
+- Learn different options for `git log`
+- Understand when to use `git add` vs `git add -p`
+
+#### Resources
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Git Basics](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
+- [Pro Git Book - Viewing History](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
+
+### Exercise 4: Branching and Merging
+
+#### Deliverables
+1. Implement a feature using a feature branch
+2. Create a second feature branch with conflicting changes
+3. Successfully merge both features into main
+4. Resolve any merge conflicts that arise
+
+#### Success Criteria
+- Feature branches follow naming conventions
+- Changes are properly isolated in branches
+- Merge conflicts are resolved correctly
+- Branch history shows clear feature development
+
+#### Hints
+- Consider a branch naming strategy (e.g., feature/, bugfix/)
+- Learn about different merge strategies
+- Understand when to use merge vs. rebase
+- Practice creating intentional conflicts to learn resolution
+
+#### Resources
+- [Git Branching](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+- [Resolving Merge Conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts)
+- [Merging vs. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+
+### Exercise 5: Collaborative Workflows
+
+#### Deliverables
+1. Fork an existing repository
+2. Create a meaningful pull request:
+   - Clear description
+   - Well-organized changes
+   - Linked to an issue
+3. Review someone else's pull request
+4. Provide constructive feedback
+
+#### Success Criteria
+- Pull request follows repository guidelines
+- Changes are well-documented and organized
+- Code review comments are helpful and specific
+- You understand the fork and PR workflow
+
+#### Hints
+- Look at successful PRs in popular repositories
+- Think about what makes a PR description useful
+- Learn about GitHub's PR features (reviews, suggestions)
+- Consider using PR templates
+
+#### Resources
+- [GitHub Pull Request Guide](https://docs.github.com/en/pull-requests)
+- [Code Review Best Practices](https://google.github.io/eng-practices/review/)
+- [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+
+## 🔍 Validation Checklist
+
+Before proceeding to Day 2, verify:
+
+1. Git Setup:
+   - Identity configured correctly
+   - SSH authentication working
+   - Core commands understood
+
+2. Repository Management:
+   - Can create/clone repositories
+   - Understand .gitignore usage
+   - Can manage remotes
+
+3. Basic Operations:
+   - Can stage and commit changes
+   - Write good commit messages
+   - Navigate history effectively
+
+4. Branch Operations:
+   - Create and switch branches
+   - Merge changes successfully
+   - Resolve conflicts properly
+
+5. Collaboration:
+   - Create pull requests
+   - Review code effectively
+   - Use GitHub features properly
+
+## 🚨 Common Issues and Solutions
+
+1. Authentication Problems:
+   - SSH key issues
+   - Permission denied errors
+   - Remote connection failures
+
+2. Merge Conflicts:
+   - Understanding conflict markers
+   - Choosing the right resolution
+   - Preventing common conflicts
+
+3. History Issues:
+   - Detached HEAD state
+   - Lost commits
+   - Reference errors
+
+4. Branch Problems:
+   - Branch naming conflicts
+   - Merge strategy confusion
+   - Remote tracking issues
 
 ## 📚 Additional Resources
 
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Guides](https://guides.github.com)
-- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+1. Interactive Learning:
+   - [Learn Git Branching](https://learngitbranching.js.org/)
+   - [GitHub Skills](https://skills.github.com/)
+   - [Git Katas](https://github.com/eficode-academy/git-katas)
 
-## 🎯 Next Steps
+2. Documentation:
+   - [Pro Git Book](https://git-scm.com/book/en/v2)
+   - [GitHub Docs](https://docs.github.com/)
+   - [Git Reference](https://git-scm.com/docs)
 
-- Review the [GitHub Flow](https://guides.github.com/introduction/flow/)
-- Practice creating and merging pull requests
-- Set up branch protection rules
-- Learn about Git hooks
+3. Tools:
+   - [GitHub CLI](https://cli.github.com/)
+   - [Git GUI Clients](https://git-scm.com/downloads/guis)
+   - [Git Extensions](https://gitextensions.github.io/)
 
-## 📝 Homework
+## 🎉 Next Steps
 
-1. Complete all practice exercises
-2. Create a personal GitHub profile
-3. Star and fork 3 interesting repositories
-4. Read the [GitHub Flow](https://guides.github.com/introduction/flow/) guide
+After mastering Git basics:
+- Explore advanced Git features
+- Learn Git hooks and automation
+- Understand Git internals
+- Practice collaborative workflows
 
-## 🔍 Quiz
-
-1. What is version control?
-2. How do you create a new branch?
-3. What's the difference between `git add` and `git commit`?
-4. How do you push changes to GitHub?
-5. What is a pull request?
-
-## 🎉 Conclusion
-
-You've now learned the basics of Git and GitHub! These tools will be essential throughout the bootcamp and your development career. In the next lesson, we'll start building our Flask backend. 
+Remember: Git is a powerful tool that takes time to master. Focus on understanding the concepts rather than memorizing commands. 

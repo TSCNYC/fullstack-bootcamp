@@ -1,162 +1,226 @@
-# Day 3: React Frontend Basics
+# Day 3: React Basics & Frontend Development
 
 ## 🎯 Learning Objectives
 
-By the end of this lesson, you will be able to:
-- Understand React's component-based architecture
-- Set up a React project with TypeScript
-- Create and compose React components
-- Manage component state and props
-- Handle user events and form submissions
-- Make API calls to your Flask backend
-- Style components using modern CSS approaches
+By the end of this day, you will:
+- Understand React fundamentals and component architecture
+- Master TypeScript integration with React
+- Implement state management effectively
+- Create reusable components and custom hooks
+- Connect frontend with backend API
+- Apply modern styling approaches
 
-## 📝 Prerequisites
+## 📝 Key Concepts
 
-- Completed Day 2 Flask API development
-- Node.js 16+ installed
-- Basic understanding of HTML, CSS, and JavaScript
-- VS Code with React/TypeScript extensions installed
+### 1. React Core Concepts
+- Components and props
+  - [React Components and Props](https://react.dev/learn/your-first-component)
+  - [Thinking in React](https://react.dev/learn/thinking-in-react)
+  - [Component Composition](https://react.dev/learn/passing-props-to-a-component)
+- Virtual DOM and rendering
+  - [React Virtual DOM Explained](https://legacy.reactjs.org/docs/faq-internals.html)
+  - [Rendering Elements](https://react.dev/learn/render-and-commit)
+- Component lifecycle
+  - [React Component Lifecycle](https://react.dev/learn/lifecycle-of-reactive-effects)
+  - [Managing Effects](https://react.dev/learn/synchronizing-with-effects)
+- JSX syntax and expressions
+  - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+  - [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
 
-## 🚀 Lesson Content
+### 2. TypeScript in React
+- Type definitions and interfaces
+  - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+  - [React TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react)
+- Generic components
+  - [TypeScript Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+  - [Generic Components in React](https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase)
+- Type inference and assertions
+  - [Type Inference](https://www.typescriptlang.org/docs/handbook/type-inference.html)
+  - [Type Assertions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions)
+- Props and state typing
+  - [Typing Component Props](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example)
+  - [Typing Hooks](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks)
 
-### 1. Introduction to React
-
-#### What is React?
-- JavaScript library for building user interfaces
-- Component-based architecture
-- Virtual DOM for efficient rendering
-- One-way data flow
-
-#### Why TypeScript?
-- Static typing
-- Better IDE support
-- Catch errors early
-- Improved maintainability
-
-### 2. Project Setup
-
-1. Create a new React project:
-```bash
-npx create-react-app client --template typescript
-cd client
-```
-
-2. Install additional dependencies:
-```bash
-npm install axios @mui/material @emotion/react @emotion/styled
-```
-
-3. Project structure:
-```
-client/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── types/
-│   ├── utils/
-│   ├── App.tsx
-│   └── index.tsx
-├── public/
-├── package.json
-└── tsconfig.json
-```
-
-### 3. Component Development
-
-#### Basic Components
-1. Functional components
-2. Props and prop types
-3. Component composition
-4. Event handling
-
-#### Example Todo Component:
-```typescript
-interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-interface TodoItemProps {
-  todo: Todo;
-  onToggle: (id: number) => void;
-  onDelete: (id: number) => void;
-}
-```
-
-### 4. State Management
-
-1. useState hook
-2. useEffect hook
-3. Custom hooks
-4. Context API basics
-
-### 5. API Integration
-
-1. Axios setup
-2. API service layer
-3. Error handling
-4. Loading states
-
-### 6. Styling Approaches
-
-1. CSS Modules
-2. Styled Components
-3. Material-UI
-4. Responsive design
-
-### 7. Form Handling
-
-1. Controlled components
-2. Form validation
-3. Error messages
-4. Submission handling
+### 3. State Management
+- Local vs. global state
+  - [Choosing the State Structure](https://react.dev/learn/choosing-the-state-structure)
+  - [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
+- React hooks
+  - [Hooks Overview](https://react.dev/reference/react)
+  - [Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)
+- Context API
+  - [Using Context](https://react.dev/learn/passing-data-deeply-with-context)
+  - [Context API Best Practices](https://react.dev/reference/react/useContext)
+- State management patterns
+  - [State Management Guide](https://react.dev/learn/managing-state)
+  - [Scaling Up with Reducer and Context](https://react.dev/learn/scaling-up-with-reducer-and-context)
 
 ## 💻 Practice Exercises
 
-1. Create a new React project with TypeScript
-2. Implement a TodoList component that:
-   - Displays a list of todos
-   - Allows adding new todos
-   - Supports marking todos as complete
-   - Enables deleting todos
-3. Create a form component for adding new todos
-4. Implement API integration with your Flask backend
-5. Add loading states and error handling
-6. Style your components using Material-UI
+### Exercise 1: Project Setup & TypeScript Configuration
 
-## 📚 Additional Resources
+#### Deliverables
+1. Create a new React project with TypeScript support
+2. Configure TypeScript compiler options for optimal development
+3. Set up development tools (ESLint, Prettier, etc.)
+4. Create a basic project structure following React best practices
 
-- [React Documentation](https://reactjs.org/)
-- [TypeScript Documentation](https://www.typescriptlang.org/)
-- [Material-UI Documentation](https://mui.com/)
-- [React Query Documentation](https://tanstack.com/query/latest)
+#### Success Criteria
+- Project compiles without TypeScript errors
+- ESLint and Prettier are working together
+- Development server runs successfully
+- Project structure supports scalability
+- Hot reloading works correctly
 
-## 🎯 Next Steps
+#### Hints
+- Consider using Create React App or Vite
+- Research TypeScript strict mode benefits
+- Think about folder organization
+- Plan for component reusability
 
-- Learn about React Router
-- Implement authentication
-- Add form validation
-- Set up testing
+### Exercise 2: Component Development
 
-## 📝 Homework
+#### Deliverables
+1. Create a Todo list component hierarchy:
+   - Todo list container
+   - Todo item component
+   - Todo form component
+2. Implement proper TypeScript types for all components
+3. Create reusable UI components (Button, Input, etc.)
+4. Add proper prop validation and documentation
 
-1. Complete all practice exercises
-2. Add form validation to the todo form
-3. Implement error boundaries
-4. Add loading skeletons
-5. Write unit tests for your components
+#### Success Criteria
+- Components are properly typed
+- Props are validated and documented
+- Components are reusable
+- TypeScript compilation passes
+- Components follow single responsibility principle
 
-## 🔍 Quiz
+#### Hints
+- Think about component composition
+- Consider prop drilling implications
+- Plan for component testing
+- Research TypeScript utility types
 
-1. What is the difference between props and state?
-2. When should you use useEffect?
-3. What are React hooks?
-4. How do you handle API calls in React?
-5. What is the purpose of TypeScript in React?
+### Exercise 3: State Management
 
-## 🎉 Conclusion
+#### Deliverables
+1. Implement local state management for Todo components
+2. Create a global state solution for user preferences
+3. Build custom hooks for common functionality
+4. Handle side effects properly
 
-You've now learned the basics of React and TypeScript! In the next lesson, we'll learn how to containerize our application using Docker. 
+#### Success Criteria
+- State updates work correctly
+- Side effects are properly cleaned up
+- Custom hooks are reusable
+- State management is efficient
+- TypeScript types are comprehensive
+
+#### Hints
+- Consider different state management approaches
+- Think about component lifecycle
+- Plan for state persistence
+- Research performance implications
+
+### Exercise 4: API Integration
+
+#### Deliverables
+1. Create a typed API client for the Todo backend
+2. Implement data fetching with proper loading and error states
+3. Add request caching and optimization
+4. Handle API errors gracefully
+
+#### Success Criteria
+- API calls are properly typed
+- Error handling is comprehensive
+- Loading states provide good UX
+- Data is cached appropriately
+- Network failures are handled gracefully
+
+#### Hints
+- Research API client libraries
+- Consider request caching strategies
+- Think about error boundary usage
+- Plan for offline support
+
+### Exercise 5: Styling & UI Components
+
+#### Deliverables
+1. Implement a consistent styling solution
+2. Create a theme system
+3. Build responsive layouts
+4. Ensure accessibility compliance
+
+#### Success Criteria
+- Styles are maintainable and scalable
+- Theme system works effectively
+- Layout is responsive
+- Components are accessible
+- Design is consistent
+
+#### Hints
+- Research CSS-in-JS solutions
+- Consider design system principles
+- Think about dark mode support
+- Plan for internationalization
+
+## 🔍 Validation Checklist
+
+Before proceeding to Day 4, verify:
+
+1. Project Setup:
+   - TypeScript configured correctly
+   - Development tools working
+   - Build process successful
+
+2. Components:
+   - Properly typed
+   - Well-organized
+   - Reusable where appropriate
+
+3. State Management:
+   - Updates working correctly
+   - Side effects handled properly
+   - Performance optimized
+
+4. API Integration:
+   - Requests working
+   - Errors handled
+   - Loading states implemented
+
+5. UI/Styling:
+   - Consistent design
+   - Responsive layout
+   - Accessible components
+
+## 🚨 Common Issues and Solutions
+
+1. TypeScript Problems:
+   - Type definition errors: Check @types packages
+   - Import issues: Verify path aliases
+   - Compiler configuration: Review tsconfig.json
+
+2. Component Issues:
+   - Prop type mismatches: Use strict TypeScript checks
+   - Re-rendering problems: Implement useMemo/useCallback
+   - Effect dependencies: Use exhaustive-deps lint rule
+
+3. State Problems:
+   - Update batching: Understand React 18 features
+   - Stale closures: Review useEffect dependencies
+   - Context performance: Implement context splitting
+
+4. API Issues:
+   - CORS errors: Configure proxy in development
+   - Error handling: Implement error boundaries
+   - Race conditions: Use cleanup functions
+
+## 🎉 Next Steps
+
+- Review React's advanced patterns
+- Explore state management libraries
+- Study React performance optimization
+- Learn about React Server Components
+
+Remember: Building a great frontend requires attention to both functionality and user experience. Take time to consider both aspects in your implementation.
